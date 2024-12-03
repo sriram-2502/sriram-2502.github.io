@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phase Portrait and Lifted Space</title>
+    <title>Phase Portrait and Linear Lifted Space</title>
     <script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
     <style>
         #container {
@@ -19,6 +19,14 @@
     </style>
 </head>
 <body>
+    <h1>Phase Portrait and Linear Lifted Space</h1>
+    <p>
+        The first plot shows the nonlinear phase portrait, while the second plot shows the trajectory in the lifted space with linear dynamics:
+        \[
+        \dot{\phi} = A \phi
+        \]
+        where \( A \) is a constant dynamics matrix.
+    </p>
     <div id="container">
         <div id="plot2d" class="plot"></div>
         <div id="plot3d" class="plot"></div>
@@ -29,7 +37,7 @@
         const mu = -0.1;  // Growth/decay rate
         const lambda = -1; // Convergence rate
 
-        // Define the dynamical system
+        // Define the nonlinear dynamical system
         function dynamicalSystem(t, y) {
             const [x1, x2] = y;
             return [
@@ -48,20 +56,51 @@
             ];
         }
 
-        // Solve the system using a simple Euler integration
+        // Define linear dynamics matrix A for the lifted space
+        const A = [
+            [mu, 0, 0],  // Dynamics for φ₁
+            [0, lambda, -lambda],  // Dynamics for φ₂
+            [0, 0, 2*mu]   // Dynamics for φ₃
+        ];
+
+        // Solve the linear system in the lifted space
+        function solveLinearLifted(phi0, tMax, dt = 0.01) {
+            let trajectory = [];
+            let phi = [...phi0]; // Initial condition for φ
+
+            for (let t = 0; t <= tMax; t += dt) {
+                trajectory.push([...phi]);
+
+                // Compute φ_dot = A * φ
+                const phiDot = [
+                    A[0][0] * phi[0] + A[0][1] * phi[1] + A[0][2] * phi[2],
+                    A[1][0] * phi[0] + A[1][1] * phi[1] + A[1][2] * phi[2],
+                    A[2][0] * phi[0] + A[2][1] * phi[1] + A[2][2] * phi[2]
+                ];
+
+                // Euler integration
+                phi = [
+                    phi[0] + phiDot[0] * dt,
+                    phi[1] + phiDot[1] * dt,
+                    phi[2] + phiDot[2] * dt
+                ];
+            }
+
+            return trajectory;
+        }
+
+        // Solve the nonlinear system
         function solveTrajectory(initial, tMax, dt = 0.01) {
             let trajectory = [];
-            let lifted = [];
             let [x1, x2] = initial;
 
             for (let t = 0; t <= tMax; t += dt) {
                 trajectory.push([x1, x2]);
-                lifted.push(liftingFunctions([x1, x2]));
                 let [dx1, dx2] = dynamicalSystem(t, [x1, x2]);
                 x1 += dx1 * dt;
                 x2 += dx2 * dt;
             }
-            return { trajectory, lifted };
+            return trajectory;
         }
 
         // Generate the phase portrait
@@ -75,11 +114,6 @@
             }
         }
 
-        // Generate the surface plot for x1^2
-        let x1_grid = Array.from({ length: 50 }, (_, i) => -2 + i * 0.08);
-        let x2_grid = Array.from({ length: 50 }, (_, i) => -2 + i * 0.08);
-        let z_grid = x1_grid.map(x1 => x2_grid.map(() => x1 ** 2));
-
         // Phase portrait plot (2D)
         let phasePortrait = {
             x: vectors.map(v => v.x),
@@ -91,7 +125,7 @@
         };
 
         let layout2D = {
-            // title: "Nonlinear Phase Portrait",
+            title: "Nonlinear Phase Portrait",
             showlegend: false, // Disable legend
             xaxis: {
                 title: "x₁",
@@ -108,17 +142,8 @@
         Plotly.newPlot('plot2d', data2D, layout2D);
 
         // Lifted space plot (3D)
-        let surfacePlot = {
-            x: x1_grid,
-            y: x2_grid,
-            z: z_grid,
-            type: 'surface',
-            colorscale: 'Viridis',
-            opacity: 0.8
-        };
-
         let layout3D = {
-            // title: "Lifted Space with Static Surface Plot",
+            title: "Lifted Space with Linear Dynamics",
             showlegend: false, // Disable legend
             scene: {
                 xaxis: { title: "φ₁(x₁, x₂) = x₁" },
@@ -128,18 +153,18 @@
             }
         };
 
-        let data3D = [surfacePlot]; // Include static surface plot initially
+        let data3D = [];
         Plotly.newPlot('plot3d', data3D, layout3D);
 
         // Add a click event to the 2D plot
-        let trajectories2D = [];
-        let trajectories3D = [];
         document.getElementById('plot2d').on('plotly_click', function(data) {
             let clickPoint = data.points[0];
             let initial = [clickPoint.x, clickPoint.y];
-            let { trajectory, lifted } = solveTrajectory(initial, 20);
+            let trajectory = solveTrajectory(initial, 20);
+            let liftedInitial = liftingFunctions(initial);
+            let liftedTrajectory = solveLinearLifted(liftedInitial, 20);
 
-            // Extract 2D trajectory coordinates
+            // Add trajectory to the 2D plot
             let trajectoryTrace2D = {
                 x: trajectory.map(point => point[0]),
                 y: trajectory.map(point => point[1]),
@@ -147,20 +172,16 @@
                 name: `Trajectory (${clickPoint.x.toFixed(2)}, ${clickPoint.y.toFixed(2)})`
             };
 
-            // Extract 3D trajectory coordinates
+            // Add trajectory to the 3D plot
             let trajectoryTrace3D = {
-                x: lifted.map(point => point[0]),
-                y: lifted.map(point => point[1]),
-                z: lifted.map(point => point[2]),
+                x: liftedTrajectory.map(point => point[0]),
+                y: liftedTrajectory.map(point => point[1]),
+                z: liftedTrajectory.map(point => point[2]),
                 mode: 'lines',
-                name: `Lifted Trajectory (${clickPoint.x.toFixed(2)}, ${clickPoint.y.toFixed(2)})`,
+                name: `Lifted Trajectory`,
                 type: 'scatter3d'
             };
 
-            trajectories2D.push(trajectoryTrace2D);
-            trajectories3D.push(trajectoryTrace3D);
-
-            // Update both plots
             Plotly.addTraces('plot2d', trajectoryTrace2D);
             Plotly.addTraces('plot3d', trajectoryTrace3D);
         });
