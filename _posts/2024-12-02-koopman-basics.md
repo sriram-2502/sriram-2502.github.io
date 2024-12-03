@@ -1,6 +1,6 @@
 ---
 title: "Koopman Basics"
-date: 2024-12-05
+# date: 2024-12-02
 permalink: /posts/2024/12/koopman-basics/
 tags:
   - koopman
