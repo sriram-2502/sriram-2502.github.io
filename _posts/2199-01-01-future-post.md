@@ -42,6 +42,9 @@ Now, let’s step into a robotics lab. Imagine programming a robot to navigate t
 Traditionally, the robot might attempt to track every person and obstacle individually—a daunting and computationally expensive task.
 </div>
 
+![croweded room](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZjc3OTFtcXJ2NXllbXRxZnQ5dnl1d3VtdDZjMHM1d2Z2dnB3bm52ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hZ44axwZV0HwoOWR3l/giphy.gif)
+
+
 But what if the robot could shift its perspective, just like we did with the waves?
 
 ### **How the Koopman Operator Helps Robots**
