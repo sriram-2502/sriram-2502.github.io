@@ -8,10 +8,16 @@
 </head>
 <body>
     <div id="plot" style="width:100%; height:600px;"></div>
-    <label for="scientific-colormap">Scientific Colormap:</label>
-    <select id="scientific-colormap"></select>
-    <label for="regular-colormap">Regular Colormap:</label>
-    <select id="regular-colormap"></select>
+
+    <div style="margin: 10px 0;">
+        <label for="scientific-colormap">Scientific Colormap:</label>
+        <select id="scientific-colormap"></select>
+    </div>
+
+    <div style="margin: 10px 0;">
+        <label for="regular-colormap">Regular Colormap:</label>
+        <select id="regular-colormap"></select>
+    </div>
 
     <script>
         // Load the JSON file dynamically for density data
@@ -31,7 +37,7 @@
                     type: 'surface',
                     colorscale: initialColormap
                 }], {
-                    // title: "Interactive Density Plot",
+                    title: "Interactive Density Plot",
                     scene: {
                         xaxis: { title: "x", range: [Math.min(...x_domain), Math.max(...x_domain)] },
                         yaxis: { title: "y", range: [Math.min(...y_domain), Math.max(...y_domain)] },
