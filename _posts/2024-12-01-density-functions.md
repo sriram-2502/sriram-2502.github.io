@@ -60,6 +60,9 @@ Imagine a robot navigating through a forest to deliver a package. Here’s how d
 3. **Safe navigation**: The drone follows the positive gradient of \\( \rho(x) \\), steering clear of obstacles while moving toward its target.
  
 ![Safe navigation with Density functions](/files/density.png)
+<!-- markdownlint-disable -->
+<iframe src="/files/density_plot.html" width="100%" height="700px" frameborder="0"></iframe>
+<!-- markdownlint-enable -->
 
 ---
 
