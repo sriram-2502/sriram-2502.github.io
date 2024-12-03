@@ -38,11 +38,14 @@ It transforms the way we study dynamic systems, allowing us to understand and pr
 
 Now, let’s step into a robotics lab. Imagine programming a robot to navigate through a crowded room. People are walking in unpredictable directions, chairs are scattered in different locations, and doors swing open and shut. To the robot, this environment looks as chaotic as the waves at the beach.
 
+<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZjc3OTFtcXJ2NXllbXRxZnQ5dnl1d3VtdDZjMHM1d2Z2dnB3bm52ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hZ44axwZV0HwoOWR3l/giphy.gif" alt="Crowded Room" width="400" height="300">
+
+
 <div style="color:orange; font-style:italic;">
 Traditionally, the robot might attempt to track every person and obstacle individually—a daunting and computationally expensive task.
 </div>
 
-![croweded room](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZjc3OTFtcXJ2NXllbXRxZnQ5dnl1d3VtdDZjMHM1d2Z2dnB3bm52ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hZ44axwZV0HwoOWR3l/giphy.gif)
+
 
 
 But what if the robot could shift its perspective, just like we did with the waves?
