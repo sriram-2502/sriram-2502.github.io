@@ -75,14 +75,14 @@
             x: points.map(p => p.x),
             y: points.map(p => p.y),
             mode: 'markers',
-            marker: { size: 6, color: 'blue' },
+            marker: { size: 6, color: 'gray' },
             name: 'Phase Portrait',
             type: 'scatter'
         };
 
         // Layout for the plot
         let layout2D = {
-            title: "Duffing Oscillator Phase Portrait",
+            // title: "Duffing Oscillator Phase Portrait",
             xaxis: { title: "x₁", range: [-2, 2] },
             yaxis: { title: "x₂", range: [-2, 2] },
             margin: { l: 40, r: 10, t: 30, b: 40 },
@@ -104,7 +104,7 @@
                 x: trajectory.map(point => point[0]),
                 y: trajectory.map(point => point[1]),
                 mode: 'lines',
-                line: { color: 'red', width: 2 },
+                line: { width: 2 },
                 name: `Trajectory (${clickPoint.x.toFixed(2)}, ${clickPoint.y.toFixed(2)})`
             };
 

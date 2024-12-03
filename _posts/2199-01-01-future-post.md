@@ -63,7 +63,8 @@ In the next section of this blog, we’ll dive deeper into the mechanics of the 
 
 ---
 
-Below are two interactive plots. On the left is the nonlinear phase portrait
+Below is the phase portrait of a duffing oscillator. Try clicking on some points and see where the trajectory lands. Can we use Koopman operator to identify the different regions? Check out the next blog post!
+
 <!-- markdownlint-disable -->
 <iframe src="/files/phase_portrait_duffing.html" width="100%" height="700px" frameborder="0"></iframe>
 <!-- markdownlint-enable -->
