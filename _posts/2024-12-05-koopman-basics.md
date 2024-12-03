@@ -5,9 +5,10 @@ permalink: /posts/2024/12/koopman-basics/
 tags:
   - koopman
   - dynamics
+math: true
 ---
 
-## A Brief Theory of the Koopman Operator**
+## A Brief Theory of the Koopman Operator
 
 To understand the Koopman operator, let’s start with the basics. Imagine we have a system of nonlinear differential equations:
 
