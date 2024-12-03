@@ -7,6 +7,7 @@ tags:
   - dynamics
 math: true
 ---
+In this blog post, we introduce the Koopman operator, a powerful mathematical framework that transforms nonlinear systems into a linear perspective by focusing on observable functions rather than raw state variables.
 
 ## A Brief Theory of the Koopman Operator
 
