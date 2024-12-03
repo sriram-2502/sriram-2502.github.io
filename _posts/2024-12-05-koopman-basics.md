@@ -81,5 +81,8 @@ The Koopman operator transforms the complex, nonlinear dynamics of the system \\
 ---
 
 ### **What’s Next?**
+Indeed we can characterize the differet regions of the duffing oscillator.
 
-In the next section, we’ll explore a concrete example. We’ll start with a nonlinear system, lift it into a higher-dimensional space, and show how the Koopman operator transforms its dynamics into a linear representation.
+![Duffing system with Koopman](/files/duffing_manifold.png)
+
+
