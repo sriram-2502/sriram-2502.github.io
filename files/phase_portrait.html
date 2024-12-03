@@ -8,26 +8,28 @@
     <style>
         #container {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column; /* Stack plots vertically */
+            align-items: center;    /* Center plots horizontally */
         }
-        #plot2d, #plot3d {
-            width: 48%; /* Adjust width for side-by-side */
-            height: 600px;
+        .plot {
+            width: 80%; /* Adjust width for more space */
+            height: 600px; /* Fixed height for square plots */
+            margin-bottom: 20px; /* Space between plots */
         }
     </style>
 </head>
 <body>
     <h1>Phase Portrait and Lifted Space</h1>
     <p>
-        The left plot shows the nonlinear phase portrait, while the right plot shows the same trajectory in the lifted space, where the axes represent the lifting functions:
+        The first plot shows the nonlinear phase portrait, while the second plot shows the same trajectory in the lifted space, where the axes represent the lifting functions:
         <br>
         \[
         \phi_1(x_1, x_2) = x_1, \quad \phi_2(x_1, x_2) = x_2, \quad \phi_3(x_1, x_2) = x_1^2
         \]
     </p>
     <div id="container">
-        <div id="plot2d"></div>
-        <div id="plot3d"></div>
+        <div id="plot2d" class="plot"></div>
+        <div id="plot3d" class="plot"></div>
     </div>
 
     <script>
