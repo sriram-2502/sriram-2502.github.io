@@ -1,14 +1,12 @@
 ---
-title: "Paper Title Number 1"
+title: "Safe Navigation Using Density Functions"
 collection: publications
 category: manuscripts
-permalink: /publication/2009-10-01-paper-title-number-1
-excerpt: 'This paper is about the number 1. The number 2 is left for future work.'
-date: 2009-10-01
-venue: 'Journal 1'
-slidesurl: 'http://academicpages.github.io/files/slides1.pdf'
-paperurl: 'http://academicpages.github.io/files/paper1.pdf'
-citation: 'Your Name, You. (2009). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'
+permalink: /publication/2023-01-15-safe-navigation-density-functions
+excerpt: 'This paper presents a novel approach for safe control synthesis using the dual formulation of the navigation problem. The main contribution of this paper is in the analytical construction of density functions for almost everywhere navigation with safety constraints. In contrast to the existing approaches, where density functions are used for the analysis of navigation problems, we use density functions for the synthesis of safe controllers. We provide convergence proof using the proposed density functions for navigation with safety. Further, we use these density functions to design feedback controllers capable of navigating in cluttered environments and high-dimensional configuration spaces. The proposed analytical construction of density functions overcomes the problem associated with navigation functions, which are known to exist but challenging to construct, and potential functions, which suffer from local minima. Application of the developed framework is demonstrated on simple integrator dynamics and fully actuated robotic systems.'
+date: 2023-01-15
+venue: 'IEEE Robotics and Automation Letters'
+#slidesurl: ''
+paperurl: 'https://arxiv.org/abs/2306.15830'
+citation: 'Zheng, Andrew, & Sriram S. K. S. Narayanan, & Umesh Vaidya (2023). "Safe Navigation Using Density Functions." <i>IEEE Robotics and Automation Letters</i>.'
 ---
-
-The contents above will be part of a list of publications, if the user clicks the link for the publication than the contents of section will be rendered as a full page, allowing you to provide more information about the paper for the reader. When publications are displayed as a single page, the contents of the above "citation" field will automatically be included below this section in a smaller font.
