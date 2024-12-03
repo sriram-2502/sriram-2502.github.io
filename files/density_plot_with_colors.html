@@ -13,12 +13,18 @@
         <option value="Viridis">Viridis</option>
         <option value="Cividis">Cividis</option>
         <option value="Plasma">Plasma</option>
+        <option value="Turbo">Turbo</option>
         <option value="Inferno">Inferno</option>
+        <option value="Magenta">Magenta</option>
+        <option value="Greys">Greys</option>
+        <option value="Blues">Blues</option>
+        <option value="RdYlBu">RdYlBu</option>
+        <option value="Rainbow">Rainbow</option>
     </select>
 
     <script>
         // Load the JSON file dynamically
-        fetch('density_data.json') // Update the path if it's in a subdirectory, e.g., '/files/density_data.json'
+        fetch('density_data.json')
             .then(response => response.json())
             .then(data => {
                 const x_domain = data.x_domain;
@@ -38,7 +44,7 @@
                     scene: {
                         xaxis: { title: "x", range: [Math.min(...x_domain), Math.max(...x_domain)] },
                         yaxis: { title: "y", range: [Math.min(...y_domain), Math.max(...y_domain)] },
-                        zaxis: { title: "Density", range: [-1, 2] },
+                        zaxis: { title: "Density", range: [-1, 2] }, // Updated limits
                         aspectmode: "cube"
                     }
                 });
