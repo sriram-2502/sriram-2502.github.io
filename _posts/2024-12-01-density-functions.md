@@ -70,7 +70,6 @@ Imagine a robot navigating through a forest to deliver a package. Here’s how d
  
 ![Safe navigation with Density functions](/files/density.png)
 <!-- markdownlint-disable -->
-<!-- <iframe src="/files/density_plot.html" width="100%" height="700px" frameborder="0"></iframe> -->
 <iframe src="/files/density_plot_with_colors.html" width="100%" height="700px" frameborder="0"></iframe>
 <!-- markdownlint-enable -->
 ---
