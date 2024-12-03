@@ -62,13 +62,11 @@ In the next section of this blog, we’ll dive deeper into the mechanics of the 
 
 ---
 
+Below are two interactive plots. On the left is the nonlinear phase portrait
+<!-- markdownlint-disable -->
+<iframe src="/files/phase_portrait.html" width="100%" height="700px" frameborder="0"></iframe>
+<!-- markdownlint-enable -->
+
+---
+
 <small>If you have any questions or would like to learn more, feel free to leave a comment below!</small>
-
-<!-- markdownlint-disable -->
-<iframe src="/files/test_plot.html" width="100%" height="500px" frameborder="0"></iframe>
-<!-- markdownlint-enable -->
-
-Below are two interactive plots. On the left is the nonlinear phase portrait, and on the right is the trajectory in the lifted space. Click on the phase portrait to see the corresponding trajectory in both spaces.
-<!-- markdownlint-disable -->
-<iframe src="/files/phase_and_lifted_corrected.html" width="100%" height="700px" frameborder="0"></iframe>
-<!-- markdownlint-enable -->
