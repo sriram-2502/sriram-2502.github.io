@@ -18,6 +18,8 @@ But what is the Koopman operator, and why is it so powerful? Let’s explore thi
 
 Imagine standing on the shore, watching waves crash onto the beach. The motion of the water appears chaotic—every droplet seems to move unpredictably, making it difficult to understand the larger pattern at play. But what if there was a way to shift your perspective, to see the waves not as random splashes but as part of a bigger picture?
 
+![sea waves](/files/sea-beach.gif)
+
 <div style="color:blue; font-weight:bold;">
 The Koopman operator provides that perspective.
 </div>
