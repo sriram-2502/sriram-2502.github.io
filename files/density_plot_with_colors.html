@@ -31,7 +31,7 @@
             });
         }
 
-        // Function to populate dropdown
+        // Function to populate dropdown with colormaps
         function populateDropdown(colorScales) {
             const colormapSelect = document.getElementById('colormap');
             
@@ -53,7 +53,7 @@
             });
         }
 
-        // Function to update the colormap
+        // Function to update the colormap dynamically
         function updateColormap(colorScales) {
             const selectedColormap = document.getElementById('colormap').value;
             if (colorScales[selectedColormap]) {
@@ -78,7 +78,7 @@
             // Initialize the plot
             initializePlot(f_density, x_domain, y_domain, initialColormap);
 
-            // Populate the dropdown
+            // Populate the dropdown with both scientific and regular colormaps
             populateDropdown(colorScales);
 
             // Add event listener for colormap selection
