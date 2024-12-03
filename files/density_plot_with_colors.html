@@ -61,10 +61,10 @@
 
                         // Update scientific colormap dynamically
                         scientificColormapSelect.onchange = function () {
-                            const selectedColormap = this.value;
-                            const colorscale = colorScales[selectedColormap];
-                            Plotly.update('plot', {}, { colorscale: [colorscale] }, 0);
-                        };
+                        const selectedColormap = this.value;
+                        const colorscale = colorScales[selectedColormap];
+                        Plotly.restyle('plot', { colorscale: [colorscale] });
+                    };
                     })
                     .catch(error => console.error('Error loading scientific color scales:', error));
 
@@ -81,9 +81,9 @@
                 // Update regular colormap dynamically
                 regularColormapSelect.onchange = function () {
                     const selectedColormap = this.value;
-                    Plotly.update('plot', {}, { colorscale: [selectedColormap] }, 0);
+                    Plotly.restyle('plot', { colorscale: [selectedColormap] });
                 };
-            })
+                })
             .catch(error => console.error('Error loading density data:', error));
     </script>
 </body>
