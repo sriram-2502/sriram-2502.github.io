@@ -18,7 +18,7 @@
 
     <script>
         // Load the JSON file dynamically
-        fetch('density_data.json') // Update the path if it's in a different directory
+        fetch('density_data.json') // Update the path if it's in a subdirectory, e.g., '/files/density_data.json'
             .then(response => response.json())
             .then(data => {
                 const x_domain = data.x_domain;
@@ -36,14 +36,14 @@
                 }], {
                     title: "Interactive Density Plot",
                     scene: {
-                        xaxis: { title: "x", range: [-10, 10] },
-                        yaxis: { title: "y", range: [-10, 10] },
+                        xaxis: { title: "x", range: [Math.min(...x_domain), Math.max(...x_domain)] },
+                        yaxis: { title: "y", range: [Math.min(...y_domain), Math.max(...y_domain)] },
                         zaxis: { title: "Density", range: [0, 10] },
                         aspectmode: "cube"
                     }
                 });
 
-                // Function to update the colormap
+                // Function to update the colormap dynamically
                 document.getElementById('colormap').onchange = function () {
                     const selectedColormap = this.value;
                     Plotly.restyle('plot', { colorscale: selectedColormap });
