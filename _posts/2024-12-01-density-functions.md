@@ -56,6 +56,8 @@ Imagine a robot navigating through a forest to deliver a package. Here’s how d
 1. **High density**: The area near the delivery point and clear flight paths.
 2. **Low density**: Areas cluttered with trees or other obstacles.
 3. **Safe navigation**: The drone follows the positive gradient of \\( \rho(x) \\), steering clear of obstacles while moving toward its target.
+ 
+![Safe navigation with Density functions](/files/density.png)
 
 ---
 
