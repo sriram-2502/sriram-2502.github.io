@@ -105,6 +105,12 @@
     margin-top: -1.5em;
     padding-left: 1.25rem;
   }
+
+  .page__content {
+    max-width: 100%; /* Allow content to span the full width */
+    padding: 0 20px; /* Add padding to the sides */
+    margin: 0 auto;  /* Center the content */
+  }
 }
 
 .page__hero {
