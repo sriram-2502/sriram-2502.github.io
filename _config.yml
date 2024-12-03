@@ -21,7 +21,7 @@ repository               : "sriram-2502/sriram-2502.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "/files/profile_pic.jpg"
   name             : "Sriram Krishnamoorthy"
   pronouns         : "he/him"  
   bio              : "PhD Candidate working on safe motion planning and data driven cotrol"
