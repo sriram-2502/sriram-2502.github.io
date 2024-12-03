@@ -23,9 +23,9 @@
             }], {
                 title: "Interactive Density Plot",
                 scene: {
-                    xaxis: { title: "x", range: [Math.min(...x_domain), Math.max(...x_domain)] },
-                    yaxis: { title: "y", range: [Math.min(...y_domain), Math.max(...y_domain)] },
-                    zaxis: { title: "Density", range: [-0.5, 2] }, // Updated z-axis limits
+                    xaxis: { title: "x", range: [Math.min(...x_domain), Math.max(...x_domain)], showticklabels: false },
+                    yaxis: { title: "y", range: [Math.min(...y_domain), Math.max(...y_domain)], showticklabels: false },
+                    zaxis: { title: "Density", range: [-0.5, 2] }, // Retain z-axis ticks
                     aspectmode: "cube"
                 }
             });
@@ -34,10 +34,21 @@
         // Function to populate dropdown
         function populateDropdown(colorScales) {
             const colormapSelect = document.getElementById('colormap');
+            
+            // Add scientific colormaps
             Object.keys(colorScales).forEach(cmapName => {
                 const option = document.createElement('option');
                 option.value = cmapName;
-                option.textContent = cmapName.charAt(0).toUpperCase() + cmapName.slice(1);
+                option.textContent = `Scientific: ${cmapName.charAt(0).toUpperCase() + cmapName.slice(1)}`;
+                colormapSelect.appendChild(option);
+            });
+
+            // Add regular colormaps
+            const regularColormaps = ['Rainbow', 'Jet', 'Inferno', 'Viridis']; // Regular colormaps
+            regularColormaps.forEach(cmap => {
+                const option = document.createElement('option');
+                option.value = cmap;
+                option.textContent = `Regular: ${cmap}`;
                 colormapSelect.appendChild(option);
             });
         }
@@ -45,11 +56,13 @@
         // Function to update the colormap
         function updateColormap(colorScales) {
             const selectedColormap = document.getElementById('colormap').value;
-            const colorscale = colorScales[selectedColormap];
-            if (colorscale) {
+            if (colorScales[selectedColormap]) {
+                // Update to a scientific colormap
+                const colorscale = colorScales[selectedColormap];
                 Plotly.restyle('plot', { colorscale: [colorscale] });
             } else {
-                console.error('Selected colormap not found in color scales.');
+                // Update to a regular colormap
+                Plotly.restyle('plot', { colorscale: [selectedColormap] });
             }
         }
 
