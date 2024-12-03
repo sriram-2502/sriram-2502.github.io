@@ -33,7 +33,7 @@
                     scene: {
                         xaxis: { title: "x", range: [Math.min(...x_domain), Math.max(...x_domain)] },
                         yaxis: { title: "y", range: [Math.min(...y_domain), Math.max(...y_domain)] },
-                        zaxis: { title: "Density", range: [-1, 2] },
+                        zaxis: { title: "Density", range: [-1, 2] }, // Updated z-axis limits
                         aspectmode: "cube"
                     }
                 });
@@ -55,7 +55,7 @@
                         colormapSelect.onchange = function () {
                             const selectedColormap = this.value;
                             const colorscale = colorScales[selectedColormap];
-                            Plotly.update('plot', {}, { colorscale: [colorscale] }, 0); // Explicitly reset the colorscale
+                            Plotly.restyle('plot', { colorscale: [colorscale] });
                         };
                     })
                     .catch(error => console.error('Error loading color scales:', error));
