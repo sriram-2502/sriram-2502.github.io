@@ -81,6 +81,11 @@ The Koopman operator transforms the complex, nonlinear dynamics of the system \\
 ---
 
 ### **What’s Next?**
+Remember the duffing system from the previous blog post? 
+<!-- markdownlint-disable -->
+<iframe src="/files/phase_portrait_duffing.html" width="50%" height="700px" frameborder="0"></iframe>
+<!-- markdownlint-enable -->
+
 Indeed we can characterize the differet regions of the duffing oscillator.
 
 ![Duffing system with Koopman](/files/duffing_manifold.png)
