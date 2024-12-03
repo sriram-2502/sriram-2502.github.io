@@ -33,6 +33,16 @@ This shift from focusing on raw data to observing meaningful patterns is the ess
 It transforms the way we study dynamic systems, allowing us to understand and predict behaviors that once seemed impossible to decode.
 
 ---
+## **Play with the Waves: See Where the Flow Takes You**
+Below is a dynamic visualization of how a system (duffing oscialltor) evolves over time. Imagine you're watching a drop of water flowing through a twisting, turning river. Click anywhere on the visualization to drop your "water droplet" into the flow and see where it goes. The paths it takes represent how the system behaves from that starting point.
+
+Can we use tools like the Koopman operator to understand the different regions of this flow? Check out the next blog post to learn more!
+
+<!-- markdownlint-disable -->
+<iframe src="/files/phase_portrait_duffing.html" width="100%" height="700px" frameborder="0"></iframe>
+<!-- markdownlint-enable -->
+
+---
 
 ## **From Waves to Robots: A Real-World Connection**
 
@@ -40,13 +50,9 @@ Now, let’s step into a robotics lab. Imagine programming a robot to navigate t
 
 <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZjc3OTFtcXJ2NXllbXRxZnQ5dnl1d3VtdDZjMHM1d2Z2dnB3bm52ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hZ44axwZV0HwoOWR3l/giphy.gif" alt="Crowded Room" width="200" height="150">
 
-
 <div style="color:orange; font-style:italic;">
 Traditionally, the robot might attempt to track every person and obstacle individually—a daunting and computationally expensive task.
 </div>
-
-
-
 
 But what if the robot could shift its perspective, just like we did with the waves?
 
@@ -63,19 +69,8 @@ By lifting these features to a higher-dimensional space, the **Koopman operator 
 
 The **Koopman operator bridges the gap between chaos and clarity**. It allows us to move from the unpredictable motion of individual elements to the predictable evolution of patterns. Whether it’s understanding waves or programming robots, this mathematical tool reveals the hidden order in the systems around us.
 
----
-
 ### **Next Steps**
 In the next section of this blog, we’ll dive deeper into the mechanics of the [Koopman operator](/posts/2024/12/koopman-basics/), explore how it works in practice, and look at real-world applications that bring this concept to life. Also check out how we can use [density functions](/posts/2024/12/density-functions-navigation/) to help robots navigate safely.
 
----
-
-Below is the phase portrait of a duffing oscillator. Try clicking on some points and see where the trajectory lands. Can we use Koopman operator to identify the different regions? Check out the next blog post!
-
-<!-- markdownlint-disable -->
-<iframe src="/files/phase_portrait_duffing.html" width="100%" height="700px" frameborder="0"></iframe>
-<!-- markdownlint-enable -->
-
----
 
 <small>If you have any questions or would like to learn more, feel free to leave a comment below!</small>

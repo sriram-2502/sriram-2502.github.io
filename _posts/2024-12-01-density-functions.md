@@ -41,7 +41,16 @@ Density functions provide a spatial map of the environment:
 The robot can interpret this map to distinguish between safe paths and areas to avoid.
 
 ### **2. Following the Gradient**
-By following the **positive gradient** of \\( \rho(x) \\), the robot moves toward regions of higher density, which:
+The robot navigates its environment by moving in the direction of the **positive gradient of the density function** \( \rho(x) \). This means that at every step, the robot seeks to increase the value of \( \rho(x) \), which represents the "density" of safe or goal-oriented regions in the space.
+
+Imagine the density function as a kind of **topographic map**, where higher values of \( \rho(x) \) correspond to peaks (safe or desirable areas, such as the target location), and lower values represent valleys (unsafe areas, such as obstacles). The robot's objective is to climb this "density hill," always heading toward areas with higher density values.
+
+To achieve this, the robot uses the **positive gradient of the density function**:
+- The gradient \( \nabla \rho(x) \) points in the direction of the steepest increase in density at any given point \( x \).
+- By following this gradient, the robot ensures it is moving toward regions of increasing density, ultimately reaching the **maximum density** (the target location).
+
+This strategy not only guides the robot safely toward the goal but also ensures it avoids low-density regions, which are associated with obstacles or unsafe areas. The dynamic nature of the density function allows the robot to adjust its trajectory in real time, ensuring it can adapt to changing environments or unexpected obstacles.
+
 - Naturally steer it toward the target,
 - Avoid low-density unsafe regions, ensuring safety.
 
@@ -57,14 +66,15 @@ As the robot perceives its environment in real time, it updates \\( \rho(x) \\) 
 Imagine a robot navigating through a forest to deliver a package. Here’s how density functions help:
 1. **High density**: The area near the delivery point and clear flight paths.
 2. **Low density**: Areas cluttered with trees or other obstacles.
-3. **Safe navigation**: The drone follows the positive gradient of \\( \rho(x) \\), steering clear of obstacles while moving toward its target.
+3. **Safe navigation**: The robot follows the positive gradient of \\( \rho(x) \\), steering clear of obstacles while moving toward its target.
  
 ![Safe navigation with Density functions](/files/density.png)
 <!-- markdownlint-disable -->
-<iframe src="/files/density_plot.html" width="100%" height="700px" frameborder="0"></iframe>
+<!-- <iframe src="/files/density_plot.html" width="100%" height="700px" frameborder="0"></iframe> -->
+<iframe src="/files/density_plot_with_dropdown.html" width="100%" height="700px" frameborder="0"></iframe>
 <!-- markdownlint-enable -->
-
 ---
+
 
 ## **Why This Approach Matters**
 
