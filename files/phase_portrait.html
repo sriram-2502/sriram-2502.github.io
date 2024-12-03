@@ -8,35 +8,50 @@
 </head>
 <body>
     <h1>Interactive Phase Portrait</h1>
+    <p>
+        This interactive phase portrait is based on the nonlinear system:
+        <br>
+        \[
+        \dot{x}_1 = \mu x_1, \quad \dot{x}_2 = \lambda (x_2 - x_1^2)
+        \]
+    </p>
     <div id="plot" style="width: 100%; height: 600px;"></div>
 
     <script>
+        // Parameters for the system
+        const mu = -0.1;  // Growth/decay rate
+        const lambda = -1; // Convergence rate
+
         // Define the dynamical system
         function dynamicalSystem(t, y) {
-            return [y[1], -y[0] - 0.1 * y[1]];
+            const [x1, x2] = y;
+            return [
+                mu * x1,
+                lambda * (x2 - x1 ** 2)
+            ];
         }
 
         // Solve the system using a simple Euler integration
         function solveTrajectory(initial, tMax, dt = 0.01) {
             let trajectory = [];
-            let [y1, y2] = initial;
+            let [x1, x2] = initial;
             for (let t = 0; t <= tMax; t += dt) {
-                trajectory.push([y1, y2]);
-                let [dy1, dy2] = dynamicalSystem(t, [y1, y2]);
-                y1 += dy1 * dt;
-                y2 += dy2 * dt;
+                trajectory.push([x1, x2]);
+                let [dx1, dx2] = dynamicalSystem(t, [x1, x2]);
+                x1 += dx1 * dt;
+                x2 += dx2 * dt;
             }
             return trajectory;
         }
 
         // Generate the phase portrait
-        let y1 = Array.from({ length: 20 }, (_, i) => -2 + i * 0.2);
-        let y2 = Array.from({ length: 20 }, (_, i) => -2 + i * 0.2);
+        let x1 = Array.from({ length: 20 }, (_, i) => -2 + i * 0.2);
+        let x2 = Array.from({ length: 20 }, (_, i) => -2 + i * 0.2);
         let vectors = [];
-        for (let i of y1) {
-            for (let j of y2) {
-                let [dy1, dy2] = dynamicalSystem(0, [i, j]);
-                vectors.push({ x: i, y: j, u: dy1, v: dy2 });
+        for (let i of x1) {
+            for (let j of x2) {
+                let [dx1, dx2] = dynamicalSystem(0, [i, j]);
+                vectors.push({ x: i, y: j, u: dx1, v: dx2 });
             }
         }
 
@@ -52,8 +67,8 @@
 
         let layout = {
             title: "Interactive Phase Portrait",
-            xaxis: { title: "y1" },
-            yaxis: { title: "y2" }
+            xaxis: { title: "x₁" },
+            yaxis: { title: "x₂" }
         };
 
         let data = [phasePortrait];
