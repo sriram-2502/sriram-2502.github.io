@@ -9,58 +9,69 @@
 <body>
     <div id="plot" style="width:100%; height:600px;"></div>
     <label for="colormap">Choose a colormap:</label>
-    <select id="colormap" onchange="updateColormap()"></select>
+    <select id="colormap"></select>
 
     <script>
-        // Load the JSON file dynamically for density data
-        fetch('density_data.json')
-            .then(response => response.json())
-            .then(densityData => {
-                const x_domain = densityData.x_domain;
-                const y_domain = densityData.y_domain;
-                const f_density = densityData.f_density;
+        // Function to initialize the plot
+        function initializePlot(f_density, x_domain, y_domain, initialColormap) {
+            Plotly.newPlot('plot', [{
+                z: f_density,
+                x: x_domain,
+                y: y_domain,
+                type: 'surface',
+                colorscale: initialColormap
+            }], {
+                title: "Interactive Density Plot",
+                scene: {
+                    xaxis: { title: "x", range: [Math.min(...x_domain), Math.max(...x_domain)] },
+                    yaxis: { title: "y", range: [Math.min(...y_domain), Math.max(...y_domain)] },
+                    zaxis: { title: "Density", range: [-0.5, 2] }, // Updated z-axis limits
+                    aspectmode: "cube"
+                }
+            });
+        }
 
-                // Create the initial plot
-                const initialColormap = 'batlow'; // Default colormap
-                Plotly.newPlot('plot', [{
-                    z: f_density,
-                    x: x_domain,
-                    y: y_domain,
-                    type: 'surface',
-                    colorscale: initialColormap
-                }], {
-                    title: "Interactive Density Plot",
-                    scene: {
-                        xaxis: { title: "x", range: [Math.min(...x_domain), Math.max(...x_domain)] },
-                        yaxis: { title: "y", range: [Math.min(...y_domain), Math.max(...y_domain)] },
-                        zaxis: { title: "Density", range: [-0.5, 2] }, // Updated z-axis limits
-                        aspectmode: "cube"
-                    }
-                });
+        // Function to populate dropdown
+        function populateDropdown(colorScales) {
+            const colormapSelect = document.getElementById('colormap');
+            Object.keys(colorScales).forEach(cmapName => {
+                const option = document.createElement('option');
+                option.value = cmapName;
+                option.textContent = cmapName.charAt(0).toUpperCase() + cmapName.slice(1);
+                colormapSelect.appendChild(option);
+            });
+        }
 
-                // Load Crameri color scales
-                fetch('cmcrameri_colors.json')
-                    .then(response => response.json())
-                    .then(colorScales => {
-                        const colormapSelect = document.getElementById('colormap');
-                        // Populate dropdown with color map names
-                        Object.keys(colorScales).forEach(cmapName => {
-                            const option = document.createElement('option');
-                            option.value = cmapName;
-                            option.textContent = cmapName.charAt(0).toUpperCase() + cmapName.slice(1);
-                            colormapSelect.appendChild(option);
-                        });
+        // Function to update the colormap
+        function updateColormap(colorScales) {
+            const selectedColormap = document.getElementById('colormap').value;
+            const colorscale = colorScales[selectedColormap];
+            if (colorscale) {
+                Plotly.restyle('plot', { colorscale: [colorscale] });
+            } else {
+                console.error('Selected colormap not found in color scales.');
+            }
+        }
 
-                        // Update colormap dynamically on selection
-                        colormapSelect.onchange = function () {
-                            const selectedColormap = this.value;
-                            const colorscale = colorScales[selectedColormap];
-                            Plotly.restyle('plot', { colorscale: [colorscale] });
-                        };
-                    })
-                    .catch(error => console.error('Error loading color scales:', error));
-            })
-            .catch(error => console.error('Error loading density data:', error));
+        // Main script execution
+        Promise.all([
+            fetch('density_data.json').then(response => response.json()),
+            fetch('cmcrameri_colors.json').then(response => response.json())
+        ])
+        .then(([densityData, colorScales]) => {
+            const { x_domain, y_domain, f_density } = densityData;
+            const initialColormap = 'batlow'; // Default colormap
+
+            // Initialize the plot
+            initializePlot(f_density, x_domain, y_domain, initialColormap);
+
+            // Populate the dropdown
+            populateDropdown(colorScales);
+
+            // Add event listener for colormap selection
+            document.getElementById('colormap').addEventListener('change', () => updateColormap(colorScales));
+        })
+        .catch(error => console.error('Error loading data:', error));
     </script>
 </body>
 </html>
