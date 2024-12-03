@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duffing Oscillator Phase Portrait</title>
+    <script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
+    <style>
+        #container {
+            display: flex;
+            justify-content: center;
+        }
+        .plot {
+            width: 80%;
+            height: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="plot2d" class="plot"></div>
+    </div>
+
+    <script>
+        // Parameters for the Duffing oscillator
+        const delta = 0.2;  // Damping coefficient
+        const alpha = -1;   // Linear stiffness
+        const beta = 1;     // Cubic stiffness
+        const gamma = 0.3;  // Forcing amplitude
+        const omega = 1.2;  // Forcing frequency
+
+        // Time step for integration
+        const dt = 0.01;
+
+        // Define the Duffing oscillator dynamics
+        function duffingOscillator(t, y) {
+            const [x1, x2] = y;
+            const forcing = gamma * Math.cos(omega * t);
+            return [
+                x2,
+                -delta * x2 - alpha * x1 - beta * x1 ** 3 + forcing
+            ];
+        }
+
+        // Solve the Duffing system using Euler integration
+        function solveDuffing(initial, tMax) {
+            let trajectory = [];
+            let [x1, x2] = initial;
+            let t = 0;
+
+            while (t <= tMax) {
+                trajectory.push([x1, x2]);
+                const [dx1, dx2] = duffingOscillator(t, [x1, x2]);
+                x1 += dx1 * dt;
+                x2 += dx2 * dt;
+                t += dt;
+            }
+
+            return trajectory;
+        }
+
+        // Generate the phase space grid for streamlines
+        function generateStreamlines(x1Range, x2Range, resolution) {
+            let x1 = Array.from({ length: resolution }, (_, i) => x1Range[0] + (i / (resolution - 1)) * (x1Range[1] - x1Range[0]));
+            let x2 = Array.from({ length: resolution }, (_, i) => x2Range[0] + (i / (resolution - 1)) * (x2Range[1] - x2Range[0]));
+            let streamlines = { x: [], y: [], u: [], v: [] };
+
+            for (let i of x1) {
+                for (let j of x2) {
+                    let [dx1, dx2] = duffingOscillator(0, [i, j]);
+                    streamlines.x.push(i);
+                    streamlines.y.push(j);
+                    streamlines.u.push(dx1);
+                    streamlines.v.push(dx2);
+                }
+            }
+
+            return streamlines;
+        }
+
+        // Generate the Duffing streamlines
+        const streamlines = generateStreamlines([-2, 2], [-2, 2], 20);
+
+        // Streamslice plot
+        let streamlinePlot = {
+            x: streamlines.x,
+            y: streamlines.y,
+            mode: 'lines+markers',
+            marker: { size: 3, color: 'blue' },
+            line: { color: 'blue', width: 1 },
+            type: 'scattergl',
+            name: 'Streamlines'
+        };
+
+        // Layout for the plot
+        let layout2D = {
+            title: "Duffing Oscillator Phase Portrait",
+            xaxis: { title: "x₁", range: [-2, 2] },
+            yaxis: { title: "x₂", range: [-2, 2] },
+            margin: { l: 40, r: 10, t: 30, b: 40 },
+            showlegend: false
+        };
+
+        // Add streamlines to the plot
+        let data2D = [streamlinePlot];
+
+        Plotly.newPlot('plot2d', data2D, layout2D);
+
+        // Add a click event to simulate a trajectory
+        document.getElementById('plot2d').on('plotly_click', function (data) {
+            let clickPoint = data.points[0];
+            let initial = [clickPoint.x, clickPoint.y];
+            let trajectory = solveDuffing(initial, 20);
+
+            // Extract trajectory coordinates
+            let trajectoryTrace = {
+                x: trajectory.map(point => point[0]),
+                y: trajectory.map(point => point[1]),
+                mode: 'lines',
+                line: { color: 'red', width: 2 },
+                name: `Trajectory (${clickPoint.x.toFixed(2)}, ${clickPoint.y.toFixed(2)})`
+            };
+
+            Plotly.addTraces('plot2d', trajectoryTrace);
+        });
+    </script>
+</body>
+</html>

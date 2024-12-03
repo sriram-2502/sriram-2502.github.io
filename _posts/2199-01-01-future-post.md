@@ -65,7 +65,7 @@ In the next section of this blog, we’ll dive deeper into the mechanics of the 
 
 Below are two interactive plots. On the left is the nonlinear phase portrait
 <!-- markdownlint-disable -->
-<iframe src="/files/phase_portrait.html" width="100%" height="700px" frameborder="0"></iframe>
+<iframe src="/files/phase_portrait_duffing.html" width="100%" height="700px" frameborder="0"></iframe>
 <!-- markdownlint-enable -->
 
 ---
