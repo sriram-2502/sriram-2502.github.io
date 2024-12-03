@@ -3,30 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phase Portrait and Linear Lifted Space</title>
+    <title>Compact Phase Portrait and Lifted Space</title>
     <script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
     <style>
         #container {
             display: flex;
-            flex-direction: column; /* Stack plots vertically */
-            align-items: center;    /* Center plots horizontally */
+            flex-direction: column;
+            align-items: center;
         }
         .plot {
-            width: 75%; /* Reduce plot size to 75% of the container */
-            height: 450px; /* Adjust height for consistent scaling */
-            margin-bottom: 20px; /* Space between plots */
+            width: 75%; /* Reduce plot width */
+            height: 350px; /* Reduce plot height for compactness */
+            margin-bottom: 10px; /* Minimize space between plots */
         }
     </style>
 </head>
 <body>
-    <h1>Phase Portrait and Linear Lifted Space</h1>
-    <p>
-        The first plot shows the nonlinear phase portrait, while the second plot shows the trajectory in the lifted space with linear dynamics:
-        \[
-        \dot{\phi} = A \phi
-        \]
-        Both plots use the same color for each trajectory.
-    </p>
     <div id="container">
         <div id="plot2d" class="plot"></div>
         <div id="plot3d" class="plot"></div>
@@ -125,15 +117,16 @@
         };
 
         let layout2D = {
+            margin: { l: 40, r: 10, t: 30, b: 40 }, // Compact margins
             title: "Nonlinear Phase Portrait",
             showlegend: false, // Disable legend
             xaxis: {
                 title: "x₁",
-                scaleanchor: "y", // Locks the aspect ratio with y-axis
-                scaleratio: 1     // Equal scaling
+                range: [-2, 2] // Set x-axis limits
             },
             yaxis: {
-                title: "x₂"
+                title: "x₂",
+                range: [-2, 2] // Set y-axis limits
             }
         };
 
@@ -143,12 +136,13 @@
 
         // Lifted space plot (3D)
         let layout3D = {
+            margin: { l: 0, r: 0, t: 30, b: 10 }, // Compact margins
             title: "Lifted Space with Linear Dynamics",
             showlegend: false, // Disable legend
             scene: {
-                xaxis: { title: "φ₁(x₁, x₂) = x₁" },
-                yaxis: { title: "φ₂(x₁, x₂) = x₂" },
-                zaxis: { title: "φ₃(x₁, x₂) = x₁²" },
+                xaxis: { title: "φ₁(x₁, x₂) = x₁", range: [-2, 2] }, // Set x-axis limits
+                yaxis: { title: "φ₂(x₁, x₂) = x₂", range: [-2, 2] }, // Set y-axis limits
+                zaxis: { title: "φ₃(x₁, x₂) = x₁²", range: [-2, 2] }, // Set z-axis limits
                 aspectmode: "cube" // Ensures equal scaling for all axes
             }
         };
