@@ -25,7 +25,7 @@
         \[
         \dot{\phi} = A \phi
         \]
-        where \( A \) is a constant dynamics matrix. Both plots use the same color for each trajectory.
+        Both plots use the same color for each trajectory.
     </p>
     <div id="container">
         <div id="plot2d" class="plot"></div>
@@ -62,16 +62,6 @@
             [0, -0.5, 0],  // Dynamics for φ₂
             [0, 0, -0.2]   // Dynamics for φ₃
         ];
-
-        // Generate a random color for the trajectory
-        function getRandomColor() {
-            const letters = '0123456789ABCDEF';
-            let color = '#';
-            for (let i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
-        }
 
         // Solve the linear system in the lifted space
         function solveLinearLifted(phi0, tMax, dt = 0.01) {
@@ -175,7 +165,7 @@
             let liftedTrajectory = solveLinearLifted(liftedInitial, 20);
 
             // Generate a random color for this trajectory
-            const color = getRandomColor();
+            const color = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
 
             // Add trajectory to the 2D plot
             let trajectoryTrace2D = {
