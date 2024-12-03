@@ -93,8 +93,14 @@
 
         let layout2D = {
             title: "Nonlinear Phase Portrait",
-            xaxis: { title: "x₁" },
-            yaxis: { title: "x₂" }
+            xaxis: {
+                title: "x₁",
+                scaleanchor: "y", // Locks the aspect ratio with y-axis
+                scaleratio: 1     // Equal scaling
+            },
+            yaxis: {
+                title: "x₂"
+            }
         };
 
         let data2D = [phasePortrait];
@@ -107,7 +113,8 @@
             scene: {
                 xaxis: { title: "φ₁(x₁, x₂) = x₁" },
                 yaxis: { title: "φ₂(x₁, x₂) = x₂" },
-                zaxis: { title: "φ₃(x₁, x₂) = x₁²" }
+                zaxis: { title: "φ₃(x₁, x₂) = x₁²" },
+                aspectmode: "cube" // Ensures equal scaling for all axes
             }
         };
 
