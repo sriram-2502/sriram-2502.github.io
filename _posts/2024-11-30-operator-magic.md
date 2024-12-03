@@ -66,7 +66,7 @@ The **Koopman operator bridges the gap between chaos and clarity**. It allows us
 ---
 
 ### **Next Steps**
-In the next section of this blog, we’ll dive deeper into the mechanics of the [Koopman operator](/posts/2024/12/koopman-basics/), explore how it works in practice, and look at real-world applications that bring this concept to life.
+In the next section of this blog, we’ll dive deeper into the mechanics of the [Koopman operator](/posts/2024/12/koopman-basics/), explore how it works in practice, and look at real-world applications that bring this concept to life. Also check out how we can use [density functions](/posts/2024/12/density-functions-navigation/) to help robots navigate safely.
 
 ---
 
