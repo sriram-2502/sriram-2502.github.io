@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Phase Portrait</title>
+    <script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
+</head>
+<body>
+    <h1>Interactive Phase Portrait</h1>
+    <div id="plot" style="width: 100%; height: 600px;"></div>
+
+    <script>
+        // Define the dynamical system
+        function dynamicalSystem(t, y) {
+            return [y[1], -y[0] - 0.1 * y[1]];
+        }
+
+        // Solve the system using a simple Euler integration
+        function solveTrajectory(initial, tMax, dt = 0.01) {
+            let trajectory = [];
+            let [y1, y2] = initial;
+            for (let t = 0; t <= tMax; t += dt) {
+                trajectory.push([y1, y2]);
+                let [dy1, dy2] = dynamicalSystem(t, [y1, y2]);
+                y1 += dy1 * dt;
+                y2 += dy2 * dt;
+            }
+            return trajectory;
+        }
+
+        // Generate the phase portrait
+        let y1 = Array.from({ length: 20 }, (_, i) => -2 + i * 0.2);
+        let y2 = Array.from({ length: 20 }, (_, i) => -2 + i * 0.2);
+        let vectors = [];
+        for (let i of y1) {
+            for (let j of y2) {
+                let [dy1, dy2] = dynamicalSystem(0, [i, j]);
+                vectors.push({ x: i, y: j, u: dy1, v: dy2 });
+            }
+        }
+
+        // Plot the phase portrait
+        let phasePortrait = {
+            x: vectors.map(v => v.x),
+            y: vectors.map(v => v.y),
+            mode: 'markers',
+            marker: { size: 3, color: 'blue' },
+            name: 'Phase Portrait',
+            type: 'scatter'
+        };
+
+        let layout = {
+            title: "Interactive Phase Portrait",
+            xaxis: { title: "y1" },
+            yaxis: { title: "y2" }
+        };
+
+        let data = [phasePortrait];
+
+        Plotly.newPlot('plot', data, layout);
+
+        // Add a click event to the plot
+        let trajectories = [];
+        document.getElementById('plot').on('plotly_click', function(data) {
+            let clickPoint = data.points[0];
+            let initial = [clickPoint.x, clickPoint.y];
+            let trajectory = solveTrajectory(initial, 20);
+
+            // Extract trajectory coordinates
+            let trajectoryTrace = {
+                x: trajectory.map(point => point[0]),
+                y: trajectory.map(point => point[1]),
+                mode: 'lines',
+                name: `Trajectory (${clickPoint.x.toFixed(2)}, ${clickPoint.y.toFixed(2)})`
+            };
+
+            trajectories.push(trajectoryTrace);
+            Plotly.addTraces('plot', trajectoryTrace);
+        });
+    </script>
+</body>
+</html>
