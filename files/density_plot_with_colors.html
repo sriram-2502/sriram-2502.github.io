@@ -8,8 +8,10 @@
 </head>
 <body>
     <div id="plot" style="width:100%; height:600px;"></div>
-    <label for="colormap">Choose a colormap:</label>
-    <select id="colormap" onchange="updateColormap()"></select>
+    <label for="scientific-colormap">Scientific Colormap:</label>
+    <select id="scientific-colormap"></select>
+    <label for="regular-colormap">Regular Colormap:</label>
+    <select id="regular-colormap"></select>
 
     <script>
         // Load the JSON file dynamically for density data
@@ -21,7 +23,7 @@
                 const f_density = densityData.f_density;
 
                 // Create the initial plot
-                const initialColormap = 'batlow'; // Default colormap
+                const initialColormap = 'batlow'; // Default scientific colormap
                 Plotly.newPlot('plot', [{
                     z: f_density,
                     x: x_domain,
@@ -42,23 +44,39 @@
                 fetch('cmcrameri_colors.json')
                     .then(response => response.json())
                     .then(colorScales => {
-                        const colormapSelect = document.getElementById('colormap');
-                        // Populate dropdown with color map names
+                        const scientificColormapSelect = document.getElementById('scientific-colormap');
+                        // Populate scientific dropdown
                         Object.keys(colorScales).forEach(cmapName => {
                             const option = document.createElement('option');
                             option.value = cmapName;
                             option.textContent = cmapName.charAt(0).toUpperCase() + cmapName.slice(1);
-                            colormapSelect.appendChild(option);
+                            scientificColormapSelect.appendChild(option);
                         });
 
-                        // Update colormap dynamically on selection
-                        colormapSelect.onchange = function () {
+                        // Update scientific colormap dynamically
+                        scientificColormapSelect.onchange = function () {
                             const selectedColormap = this.value;
                             const colorscale = colorScales[selectedColormap];
-                            Plotly.update('plot', {}, { colorscale: [colorscale] }, 0); // Explicitly reset the colorscale
+                            Plotly.update('plot', {}, { colorscale: [colorscale] }, 0);
                         };
                     })
-                    .catch(error => console.error('Error loading color scales:', error));
+                    .catch(error => console.error('Error loading scientific color scales:', error));
+
+                // Populate regular colormap dropdown
+                const regularColormapSelect = document.getElementById('regular-colormap');
+                const regularColormaps = ['Jet', 'Rainbow', 'Inferno', 'Viridis', 'Cividis']; // Regular colormaps
+                regularColormaps.forEach(cmap => {
+                    const option = document.createElement('option');
+                    option.value = cmap;
+                    option.textContent = cmap;
+                    regularColormapSelect.appendChild(option);
+                });
+
+                // Update regular colormap dynamically
+                regularColormapSelect.onchange = function () {
+                    const selectedColormap = this.value;
+                    Plotly.update('plot', {}, { colorscale: [selectedColormap] }, 0);
+                };
             })
             .catch(error => console.error('Error loading density data:', error));
     </script>
