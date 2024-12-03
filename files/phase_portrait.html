@@ -19,10 +19,6 @@
     </style>
 </head>
 <body>
-    <h1>Phase Portrait and Lifted Space</h1>
-    <p>
-        The first plot shows the nonlinear phase portrait, while the second plot shows the same trajectory in the lifted space with a static surface plot of \( \phi_3(x_1, x_2) = x_1^2 \).
-    </p>
     <div id="container">
         <div id="plot2d" class="plot"></div>
         <div id="plot3d" class="plot"></div>
@@ -95,7 +91,7 @@
         };
 
         let layout2D = {
-            title: "Nonlinear Phase Portrait",
+            // title: "Nonlinear Phase Portrait",
             showlegend: false, // Disable legend
             xaxis: {
                 title: "x₁",
@@ -118,11 +114,11 @@
             z: z_grid,
             type: 'surface',
             colorscale: 'Viridis',
-            opacity: 0.7
+            opacity: 0.8
         };
 
         let layout3D = {
-            title: "Lifted Space with Static Surface Plot",
+            // title: "Lifted Space with Static Surface Plot",
             showlegend: false, // Disable legend
             scene: {
                 xaxis: { title: "φ₁(x₁, x₂) = x₁" },
@@ -132,7 +128,7 @@
             }
         };
 
-        let data3D = [surfacePlot]; // Initially only the static surface plot
+        let data3D = [surfacePlot]; // Include static surface plot initially
         Plotly.newPlot('plot3d', data3D, layout3D);
 
         // Add a click event to the 2D plot
