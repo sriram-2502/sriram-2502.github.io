@@ -9,10 +9,13 @@
         #container {
             display: flex;
             justify-content: center;
+            flex-direction: column;
+            align-items: center;
         }
         .plot {
-            width: 80%;
+            width: 75%;
             height: 600px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -28,9 +31,7 @@
         const beta = 1;     // Cubic stiffness
         const gamma = 0.3;  // Forcing amplitude
         const omega = 1.2;  // Forcing frequency
-
-        // Time step for integration
-        const dt = 0.01;
+        const dt = 0.01;    // Time step for integration
 
         // Define the Duffing oscillator dynamics
         function duffingOscillator(t, y) {
@@ -59,37 +60,24 @@
             return trajectory;
         }
 
-        // Generate the phase space grid for streamlines
-        function generateStreamlines(x1Range, x2Range, resolution) {
-            let x1 = Array.from({ length: resolution }, (_, i) => x1Range[0] + (i / (resolution - 1)) * (x1Range[1] - x1Range[0]));
-            let x2 = Array.from({ length: resolution }, (_, i) => x2Range[0] + (i / (resolution - 1)) * (x2Range[1] - x2Range[0]));
-            let streamlines = { x: [], y: [], u: [], v: [] };
-
-            for (let i of x1) {
-                for (let j of x2) {
-                    let [dx1, dx2] = duffingOscillator(0, [i, j]);
-                    streamlines.x.push(i);
-                    streamlines.y.push(j);
-                    streamlines.u.push(dx1);
-                    streamlines.v.push(dx2);
-                }
+        // Generate initial phase portrait points
+        let x1 = Array.from({ length: 20 }, (_, i) => -2 + i * 0.2);
+        let x2 = Array.from({ length: 20 }, (_, i) => -2 + i * 0.2);
+        let points = [];
+        for (let i of x1) {
+            for (let j of x2) {
+                points.push({ x: i, y: j });
             }
-
-            return streamlines;
         }
 
-        // Generate the Duffing streamlines
-        const streamlines = generateStreamlines([-2, 2], [-2, 2], 20);
-
-        // Streamslice plot
-        let streamlinePlot = {
-            x: streamlines.x,
-            y: streamlines.y,
-            mode: 'lines+markers',
-            marker: { size: 3, color: 'blue' },
-            line: { color: 'blue', width: 1 },
-            type: 'scattergl',
-            name: 'Streamlines'
+        // Phase portrait plot
+        let phasePortrait = {
+            x: points.map(p => p.x),
+            y: points.map(p => p.y),
+            mode: 'markers',
+            marker: { size: 6, color: 'blue' },
+            name: 'Phase Portrait',
+            type: 'scatter'
         };
 
         // Layout for the plot
@@ -101,8 +89,7 @@
             showlegend: false
         };
 
-        // Add streamlines to the plot
-        let data2D = [streamlinePlot];
+        let data2D = [phasePortrait];
 
         Plotly.newPlot('plot2d', data2D, layout2D);
 
