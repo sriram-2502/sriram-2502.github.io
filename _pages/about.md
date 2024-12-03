@@ -15,12 +15,12 @@ Currently, I’m working on **data-driven control for quadruped locomotion over 
 
 ## Research Interests
 I’m passionate about exploring innovative approaches in:
-- **Data-Driven Control**
-- **Motion Planning**
-- **Optimal Control**
-- **Model Predictive Control (MPC)**
-- **Deep Learning**
-- **Reinforcement Learning**
+- Data-Driven Control
+- Motion Planning
+- Optimal Control
+- Model Predictive Control
+- Deep Learning
+- Reinforcement Learning
 
 ---
 
