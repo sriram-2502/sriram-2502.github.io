@@ -9,30 +9,19 @@
 <body>
     <div id="plot" style="width:100%; height:600px;"></div>
     <label for="colormap">Choose a colormap:</label>
-    <select id="colormap" onchange="updateColormap()">
-        <option value="Viridis">Viridis</option>
-        <option value="Cividis">Cividis</option>
-        <option value="Plasma">Plasma</option>
-        <option value="Turbo">Turbo</option>
-        <option value="Inferno">Inferno</option>
-        <option value="Magenta">Magenta</option>
-        <option value="Greys">Greys</option>
-        <option value="Blues">Blues</option>
-        <option value="RdYlBu">RdYlBu</option>
-        <option value="Rainbow">Rainbow</option>
-    </select>
+    <select id="colormap" onchange="updateColormap()"></select>
 
     <script>
-        // Load the JSON file dynamically
+        // Load the JSON file dynamically for density data
         fetch('density_data.json')
             .then(response => response.json())
-            .then(data => {
-                const x_domain = data.x_domain;
-                const y_domain = data.y_domain;
-                const f_density = data.f_density;
+            .then(densityData => {
+                const x_domain = densityData.x_domain;
+                const y_domain = densityData.y_domain;
+                const f_density = densityData.f_density;
 
                 // Create the initial plot
-                const initialColormap = 'Viridis';
+                const initialColormap = 'batlow'; // Default colormap
                 Plotly.newPlot('plot', [{
                     z: f_density,
                     x: x_domain,
@@ -44,16 +33,32 @@
                     scene: {
                         xaxis: { title: "x", range: [Math.min(...x_domain), Math.max(...x_domain)] },
                         yaxis: { title: "y", range: [Math.min(...y_domain), Math.max(...y_domain)] },
-                        zaxis: { title: "Density", range: [-1, 2] }, // Updated limits
+                        zaxis: { title: "Density", range: [-1, 2] }, // Updated z-axis limits
                         aspectmode: "cube"
                     }
                 });
 
-                // Function to update the colormap dynamically
-                document.getElementById('colormap').onchange = function () {
-                    const selectedColormap = this.value;
-                    Plotly.restyle('plot', { colorscale: selectedColormap });
-                };
+                // Load Crameri color scales
+                fetch('cmcrameri_colors.json')
+                    .then(response => response.json())
+                    .then(colorScales => {
+                        const colormapSelect = document.getElementById('colormap');
+                        // Populate dropdown with color map names
+                        Object.keys(colorScales).forEach(cmapName => {
+                            const option = document.createElement('option');
+                            option.value = cmapName;
+                            option.textContent = cmapName.charAt(0).toUpperCase() + cmapName.slice(1);
+                            colormapSelect.appendChild(option);
+                        });
+
+                        // Update colormap dynamically on selection
+                        colormapSelect.onchange = function () {
+                            const selectedColormap = this.value;
+                            const colorscale = colorScales[selectedColormap];
+                            Plotly.restyle('plot', { colorscale: [colorscale] });
+                        };
+                    })
+                    .catch(error => console.error('Error loading color scales:', error));
             })
             .catch(error => console.error('Error loading density data:', error));
     </script>
