@@ -25,7 +25,7 @@
         \[
         \dot{\phi} = A \phi
         \]
-        where \( A \) is a constant dynamics matrix.
+        where \( A \) is a constant dynamics matrix. Both plots use the same color for each trajectory.
     </p>
     <div id="container">
         <div id="plot2d" class="plot"></div>
@@ -58,10 +58,20 @@
 
         // Define linear dynamics matrix A for the lifted space
         const A = [
-            [mu, 0, 0],  // Dynamics for φ₁
-            [0, lambda, -lambda],  // Dynamics for φ₂
-            [0, 0, 2*mu]   // Dynamics for φ₃
+            [-0.1, 0, 0],  // Dynamics for φ₁
+            [0, -0.5, 0],  // Dynamics for φ₂
+            [0, 0, -0.2]   // Dynamics for φ₃
         ];
+
+        // Generate a random color for the trajectory
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
 
         // Solve the linear system in the lifted space
         function solveLinearLifted(phi0, tMax, dt = 0.01) {
@@ -164,11 +174,15 @@
             let liftedInitial = liftingFunctions(initial);
             let liftedTrajectory = solveLinearLifted(liftedInitial, 20);
 
+            // Generate a random color for this trajectory
+            const color = getRandomColor();
+
             // Add trajectory to the 2D plot
             let trajectoryTrace2D = {
                 x: trajectory.map(point => point[0]),
                 y: trajectory.map(point => point[1]),
                 mode: 'lines',
+                line: { color: color }, // Apply the color
                 name: `Trajectory (${clickPoint.x.toFixed(2)}, ${clickPoint.y.toFixed(2)})`
             };
 
@@ -178,8 +192,9 @@
                 y: liftedTrajectory.map(point => point[1]),
                 z: liftedTrajectory.map(point => point[2]),
                 mode: 'lines',
-                name: `Lifted Trajectory`,
-                type: 'scatter3d'
+                line: { color: color }, // Apply the same color
+                type: 'scatter3d',
+                name: `Lifted Trajectory`
             };
 
             Plotly.addTraces('plot2d', trajectoryTrace2D);
