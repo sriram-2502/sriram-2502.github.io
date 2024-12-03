@@ -8,3 +8,6 @@ tags:
   - category2
 ---
 
+<!-- markdownlint-disable -->
+<iframe src="/files/test_plot.html" width="100%" height="500px" frameborder="0"></iframe>
+<!-- markdownlint-enable -->
