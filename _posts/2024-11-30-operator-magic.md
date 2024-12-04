@@ -34,13 +34,17 @@ It transforms the way we study dynamic systems, allowing us to understand and pr
 
 ---
 ## **Play with the Waves: See Where the Flow Takes You**
-Below is a dynamic visualization of how a system (duffing oscialltor) evolves over time. Imagine you're watching a drop of water flowing through a twisting, turning river. Click anywhere on the visualization to drop your "water droplet" into the flow and see where it goes. The paths it takes represent how the system behaves from that starting point.
+Below is a dynamic visualization of how a system (Duffing oscialltor) evolves over time. Imagine you're watching a drop of water flowing through a twisting, turning river. Click anywhere on the visualization to drop your "water droplet" into the flow and see where it goes. The paths it takes represent how the system behaves from that starting point.
 
 Can we use tools like the Koopman operator to understand the different regions of this flow? Check out the next blog post to learn more!
 
 <!-- markdownlint-disable -->
 <iframe src="/files/phase_portrait_duffing.html" width="100%" height="700px" frameborder="0"></iframe>
 <!-- markdownlint-enable -->
+
+The Duffing oscillator is a classic example of a nonlinear dynamical system that exhibits rich and complex behavior. At its core, the system's dynamics are shaped by a double-well potential, meaning that there are two stable "wells" where the system can settle, separated by an unstable equilibrium point at the peak of a "hill" between them.
+
+When you click on the visualization to drop your "water droplet," you're essentially setting an initial condition for the system. Depending on where you click, the system will flow toward one of the two stable wells or oscillate between them. 
 
 ---
 
