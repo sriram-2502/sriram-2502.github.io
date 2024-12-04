@@ -77,8 +77,16 @@ Imagine a robot navigating through a forest to deliver a package. Here’s how d
 <!-- markdownlint-disable -->
 <iframe src="/files/density_plot_with_colors.html" width="100%" height="700px" frameborder="0"></iframe>
 <!-- markdownlint-enable -->
----
 
+The high-density regions represent the target, and low-density regions are "no-go" areas where the robot should not go. The gradient of this density function points away from the low-density regions, enabling the robot to course-correct and avoid these regions while navigating toward the target. Next lets see how this can be used to navigate a robot safely through the woods!
+
+<!-- markdownlint-disable -->
+<div style="display: flex; justify-content: center;">
+    <img src="/files/quad_density.gif" alt="robot navigation with density functions">
+</div>
+<!-- markdownlint-enable -->
+
+---
 
 ## **Why This Approach Matters**
 
