@@ -64,11 +64,7 @@ where:
 - \\( \lambda \\) is the eigenvalue, which describes how \\( \phi(x) \\) evolves over time.
 
 **In simpler terms:**
-- Eigenfunctions are like “building blocks” of the system’s dynamics. They evolve predictably, making them incredibly useful for analyzing and understanding the system.
-<!-- - The eigenvalues \\( \lambda \\) provide insights into the dynamics:
-  - If \\( |\lambda| < 1 \\), the system decays over time.
-  - If \\( |\lambda| > 1 \\), the system grows.
-  - If \\( \lambda \\) is complex, it corresponds to oscillatory behavior. -->
+Eigenfunctions are like “building blocks” of the system’s dynamics. They evolve predictably, making them incredibly useful for analyzing and understanding the system.
 
 ---
 
