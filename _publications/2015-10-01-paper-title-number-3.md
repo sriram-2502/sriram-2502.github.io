@@ -1,14 +1,12 @@
 ---
-title: "Paper Title Number 3"
+title: "Off-Road Navigation of Legged Robots Using Linear Transfer Operators"
 collection: publications
 category: manuscripts
-permalink: /publication/2015-10-01-paper-title-number-3
-excerpt: 'This paper is about the number 3. The number 4 is left for future work.'
-date: 2015-10-01
-venue: 'Journal 1'
-slidesurl: 'http://academicpages.github.io/files/slides3.pdf'
-paperurl: 'http://academicpages.github.io/files/paper3.pdf'
-citation: 'Your Name, You. (2015). &quot;Paper Title Number 3.&quot; <i>Journal 1</i>. 1(3).'
+permalink: /publication/2023-05-05-density-functions-offroad-navigation
+excerpt: 'This paper presents the implementation of off-road navigation on legged robots using convex optimization through linear transfer operators. Given a traversability measure that captures the off-road environment, we lift the navigation problem into the density space using the Perron-Frobenius (P-F) operator. This allows the problem formulation to be represented as a convex optimization.'
+date: 2023-05-04
+venue: 'Modeling Estimation and Control Conference (2023)'
+#slidesurl: ''
+paperurl: 'https://arxiv.org/abs/2411.12206'
+citation: 'Joseph Moyalan, Andrew Zheng, & Sriram S. K. S. Narayanan, & Umesh Vaidya (2023). "Off-Road Navigation of Legged Robots Using Linear Transfer Operators." <i> Modeling Estimation and Control Conference (2023) </i>.'
 ---
-
-The contents above will be part of a list of publications, if the user clicks the link for the publication than the contents of section will be rendered as a full page, allowing you to provide more information about the paper for the reader. When publications are displayed as a single page, the contents of the above "citation" field will automatically be included below this section in a smaller font.
