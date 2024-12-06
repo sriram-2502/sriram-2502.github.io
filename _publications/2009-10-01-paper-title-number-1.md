@@ -8,5 +8,5 @@ date: 2023-01-15
 venue: 'IEEE Robotics and Automation Letters'
 #slidesurl: ''
 paperurl: 'https://arxiv.org/abs/2306.15830'
-citation: 'Zheng, Andrew, & Sriram S. K. S. Narayanan, & Umesh Vaidya (2023). "Safe Navigation Using Density Functions." <i>IEEE Robotics and Automation Letters</i>.'
+citation: 'Andrew Zheng*, Sriram S. K. S. Narayanan*, Umesh Vaidya (2023). "Safe Navigation Using Density Functions." <i>IEEE Robotics and Automation Letters</i>.'
 ---
