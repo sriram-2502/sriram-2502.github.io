@@ -7,9 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-Hi👋, I’m **Sriram Krishnamoorthy**, a graduate student in Mechanical Engineering at **Clemson University**. My research focuses on **robotics and optimal control**, with a strong emphasis on data-driven methods for complex dynamic systems. 
-
-Currently, I’m working on **data-driven control for quadruped locomotion over challenging terrains**, combining **trajectory optimization** using global planners with **model predictive control (MPC)** for precise and adaptive movements. I have also designed adaptive control algorithms for collaborative manipulation involving **multi-agent systems** for drones and ground robots.
+Hi👋, I’m **Sriram Krishnamoorthy**, a graduate student in Mechanical Engineering at Clemson University. My research focuses on safe motion planning and data-driven control for robotic systems using Koopman operators and densty fucntions.
 
 ---
 
@@ -36,7 +34,7 @@ Here are some of the exciting projects I’ve worked on:
 ---
 
 ## Current Learning
-🌱 I’m currently exploring **traversability mapping** using **LIDAR sensors** for off-road navigation, aiming to enhance robot perception and terrain adaptability.
+🌱 I’m currently exploring **traversability mapping** using **LIDAR sensors** for off-road navigation and developing a combining **Koopman MPC** for quadruped locomotion over challenging terrains.
 
 ---
 
@@ -45,6 +43,6 @@ Here are some of the exciting projects I’ve worked on:
 - **Email**: [sriramk@clemson.edu](mailto:sriramk@clemson.edu)
 - **Twitter**: [@sriram2502](https://twitter.com/sriram2502)
 
-For more details, check out my [resume](/files/Sriram_Resume.pdf) and my [Google Scholar](https://scholar.google.com/citations?user=-kMTFjwAAAAJ&hl=en).
+For more details, check out my [Resume](/files/Sriram_Resume.pdf) and my [Google Scholar](https://scholar.google.com/citations?user=-kMTFjwAAAAJ&hl=en).
 
 ---
