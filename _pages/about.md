@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-Hi👋, I’m **Sriram Krishnamoorthy**, a PhD candidate in Mechanical Engineering at Clemson University. My research focuses on safe motion planning and data-driven control for robotic systems using Koopman operators and densty fucntions.
+Hi👋, I’m **Sriram Krishnamoorthy**, a PhD candidate in the department of Mechanical Engineering at Clemson University. My research focuses on safe motion planning and data-driven control for robotic systems using Koopman operators and densty fucntions.
 
 ---
 
