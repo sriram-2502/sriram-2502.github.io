@@ -45,6 +45,6 @@ Here are some of the exciting projects I’ve worked on:
 - **Email**: [sriramk@clemson.edu](mailto:sriramk@clemson.edu)
 - **Twitter**: [@sriram2502](https://twitter.com/sriram2502)
 
-For more details, check out my [Google Scholar profile](https://scholar.google.com/citations?user=-kMTFjwAAAAJ&hl=en).
+For more details, check out my [resume](/files/Sriram_Resume.pdf) and my [Google Scholar](https://scholar.google.com/citations?user=-kMTFjwAAAAJ&hl=en).
 
 ---
