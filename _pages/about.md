@@ -28,11 +28,10 @@ I’m passionate about exploring innovative approaches in:
 
 Here are some of the exciting projects I’ve worked on:
 
-- **SE(3) Koopman-MPC Framework**: Developed a framework integrating the **Koopman operator** and MPC for data-driven control of **quadrotors** and **quadruped robots**.
-- **Linear Time-Varying MPC**: Designed a predictive controller for **quadruped locomotion**, ensuring adaptability and efficiency in dynamic environments.
-- **Density-Based Motion Planner**: Formulated a motion planner for **robotic systems** based on density functions.
-- **Koopman Autoencoder**: Built an autoencoder leveraging **Koopman operators** for learning-based control of **complex nonlinear systems**, such as quadruped robots.
-
+- [**SE(3) Koopman-MPC**](https://github.com/sriram-2502/KoopmanMPC_Quadrotor): Developed a framework integrating the **Koopman operator** and MPC for data-driven control of **quadrotors** and **quadruped robots**.
+- **Linear Time-Varying MPC**: Designed a [model predictive controller](https://github.com/AndrewZheng-1011/Quad_ConvexMPC) for **quadruped locomotion**, ensuring adaptability and efficiency in dynamic environments.
+- **Density-Based Motion Planner**: Formulated a density function based [motion planner](https://github.com/sriram-2502/time_varying_density) for safe navigation of robotic systems.
+- **Koopman Autoencoder**: Developed an [Deep Autoencoder](https://github.com/sriram-2502/Deep_Koopman_AutoEncoder) leveraging **Koopman operators** for learning-based control of complex nonlinear systems, such as quadruped robots.
 ---
 
 ## Current Learning
