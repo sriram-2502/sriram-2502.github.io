@@ -2,13 +2,13 @@
 title: "PID Playground"
 collection: teaching
 type: "Micro teaching lesson"
-permalink: /teaching/pid-playground
+permalink: /teaching/2024-fall-micro-teaching
 venue: "Clemson Unviersity"
 date: 2024-12-05
 location: "CLemson, USA"
 ---
 
-**Description**: This micro teaching lesson provides students with hands-on experience with MATLAB/Simulink for system simulation and controller design, applying these skills to real world systems. By the end of the course, students will be able to design, analyze, and implement a PID controller to meet specified performance criteria in engineering applications.
+**Description**: This micro teaching lesson provides students with hands-on experience with MATLAB/Simulink for system simulation and controller design. By the end of the course, students will be able to design, analyze, and implement a PID controller to meet specified performance criteria in engineering applications.
 
 **Timeline**: This lesson plan should ideally occur in week 6 of the course. By this time, students should be exposed to the basics of modelling a system, Laplace transforms, representing systems as block diagrams, time domain analysis of the system, understanding stability and basics of feedback control.
 
