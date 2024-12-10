@@ -8,7 +8,7 @@ date: 2024-12-05
 location: "CLemson, USA"
 ---
 
-**Description**: This micro teaching lesson provides students with hands-on experience with MATLAB/Simulink for system simulation and controller design. By the end of the course, students will be able to design, analyze, and implement a PID controller to meet specified performance criteria in engineering applications.
+**Description**: I developed this micro teaching lesson incorporating active learning techniques as an introductory lecture to PID control. it provides students with hands-on experience with MATLAB/Simulink for system simulation and controller design. By the end of the course, students will be able to design, analyze, and implement a PID controller to meet specified performance criteria in engineering applications.
 
 **Timeline**: This lesson plan should ideally occur in week 6 of the course. By this time, students should be exposed to the basics of modelling a system, Laplace transforms, representing systems as block diagrams, time domain analysis of the system, understanding stability and basics of feedback control.
 
