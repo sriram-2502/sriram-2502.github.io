@@ -2,7 +2,7 @@
 title: "PID Playground"
 collection: teaching
 type: "Micro teaching lesson"
-permalink: /teaching/2014-spring-teaching-1
+permalink: /teaching/pid-playground
 venue: "Clemson Unviersity"
 date: 2024-12-05
 location: "CLemson, USA"
@@ -20,9 +20,9 @@ Learning Obectives
 
 Check out the full [lesson plan](/files/Lesson%20Plan%20-%20PID%20Playground%20-%20sriram.pdf).
 
-Check out the [slides](/files/PID%20playground%20slides.pptx) I made for this lesson plan.
+Check out the [slides](/files/PID%20playground%20slides.pptx) I made for this lesson plan (from Fall 2024).
 
 **Watch the Video Below:**
 <!-- markdownlint-disable -->
-<iframe src="https://drive.google.com/file/d/1A46AAygXWbpDbKeOzkkP9PLuP1pvItKm/view?usp=drive_link" width="640" height="480"></iframe>
+<iframe src="https://drive.google.com/file/d/1A46AAygXWbpDbKeOzkkP9PLuP1pvItKm/view?usp=sharing" width="640" height="480"></iframe>
 <!-- markdownlint-disable -->
