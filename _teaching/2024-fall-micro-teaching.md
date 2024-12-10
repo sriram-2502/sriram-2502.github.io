@@ -24,5 +24,5 @@ Check out the [slides](/files/PID%20playground%20slides.pptx) I made for this le
 
 **Watch the Video Below:**
 <!-- markdownlint-disable -->
-<iframe src="https://drive.google.com/file/d/1A46AAygXWbpDbKeOzkkP9PLuP1pvItKm/view?usp=sharing" width="640" height="480"></iframe>
+<iframe src="https://drive.google.com/file/d/1A46AAygXWbpDbKeOzkkP9PLuP1pvItKm/preview" width="640" height="480"></iframe>
 <!-- markdownlint-disable -->
