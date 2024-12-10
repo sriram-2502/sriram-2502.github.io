@@ -2,7 +2,7 @@
 title: "PID Playground"
 collection: teaching
 type: "Micro teaching lesson"
-permalink: /teaching/2024-fall-micro-teaching
+permalink: /teaching/pid-playground
 venue: "Clemson Unviersity"
 date: 2024-12-05
 location: "CLemson, USA"
