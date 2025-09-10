@@ -34,7 +34,7 @@ Here are some of the exciting projects I’ve worked on:
 ---
 
 ## Current Learning
-🌱 I’m currently exploring **traversability mapping** for off-road navigation and developing a combining **Koopman MPC** for quadruped locomotion over challenging terrains.
+🌱 I’m currently exploring **traversability mapping** for off-road navigation and developing a **Koopman MPC** for quadruped locomotion over challenging terrains.
 
 ---
 
